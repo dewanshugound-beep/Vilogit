@@ -29,6 +29,10 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: 'Vilogit — Build. Deploy. Automate.',
   description: 'The developer platform like GitHub, but with integrated agents that manage deployments and provide real-time reports.',
+  verification: {
+    google: "wOhQQh_20E6OJGYP_EV4VwqcpzaKejWbiYjTnDSlKbg",
+  },
+  keywords: ["developer platform", "AI agents", "git platform", "deployment engine", "automated DevOps", "Vilogit", "Devanshu", "Chavara Vidyapeeth"],
   icons: {
     icon: '/logo.png',
   },
