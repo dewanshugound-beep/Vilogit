@@ -6,6 +6,7 @@ import { Hero } from "@/components/landing/hero"
 import { ScrollRow } from "@/components/landing/scroll-row"
 import { GlassCard, PRDiffCard, CommunityCard, AIChatCard } from "@/components/landing/glass-cards"
 import { IndiaSection } from "@/components/landing/india-section"
+import { FounderSection } from "@/components/landing/founder-section"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ChevronRight, ArrowRight } from "lucide-react"
@@ -88,6 +89,9 @@ export default function Home() {
           </GlassCard>
         </ScrollRow>
       </section>
+
+      {/* Origin Section */}
+      <FounderSection />
 
       {/* India Section */}
       <section className="content-auto">
