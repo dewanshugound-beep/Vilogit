@@ -27,6 +27,7 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://vilogit.dev'),
   title: 'Vilogit — Build. Deploy. Automate.',
   description: 'The developer platform like GitHub, but with integrated agents that manage deployments and provide real-time reports.',
   verification: {
