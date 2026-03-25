@@ -31,7 +31,7 @@ export function FounderSection() {
               Devanshu
             </h2>
             <p className="text-[#8896B3] text-lg font-light leading-relaxed mb-8">
-              Founded by <span className="text-white font-medium">Devanshu</span>, a 14-year-old visionary student currently in 9th grade at <span className="text-white font-medium italic">Chavara Vidyaa Peeth, Narsinghpur</span>. 
+              Founded by <span className="text-white font-medium">Devanshu</span>, a 14-year-old visionary student currently in 9th grade at <span className="text-white font-medium italic">Chavara Vidyapeeth, Narsinghpur</span>. 
               Coming from the village of <span className="text-white font-medium">Kachhwa</span>, Devanshu is building Vilogit to redefine how developers build, collaborate, and deploy globally. 
               Proof that code has no age and innovation starts in the roots.
             </p>
