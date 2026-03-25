@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-[5%] py-32 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-[5%] py-40 overflow-hidden">
       {/* Background glow effects - Reduced opacity for performance */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none opacity-40 will-change-transform" />
       
@@ -66,7 +66,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.3 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 animate-bounce"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 animate-bounce"
       >
         <span className="font-mono text-[0.6rem] tracking-[0.4em] uppercase text-[#8896B3]/60">scroll</span>
         <div className="w-px h-16 bg-gradient-to-b from-primary via-primary/40 to-transparent" />
