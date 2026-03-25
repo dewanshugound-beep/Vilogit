@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono, Instrument_Sans, Instrument_Serif } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 const inter = Inter({ 
@@ -29,7 +28,6 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: 'Vilogit — Build. Discuss. Ship together.',
   description: 'A next-generation developer platform built in India for developers worldwide. GitHub meets Reddit with AI-powered collaboration.',
-  generator: 'v0.app',
   icons: {
     icon: [
       {
@@ -58,7 +56,6 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${instrumentSans.variable} ${instrumentSerif.variable}`}>
       <body className="font-sans antialiased">
         {children}
-        <Analytics />
       </body>
     </html>
   )
