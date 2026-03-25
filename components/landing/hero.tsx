@@ -1,44 +1,49 @@
 "use client"
 
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { ChevronRight } from "lucide-react"
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-center px-[5%] py-24 border-b border-[rgba(255,255,255,0.06)]">
-      <div className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.12em] text-[#FF6B00] uppercase mb-5">
-        <span className="block w-7 h-px bg-[#FF6B00]" />
-        Developer Platform
-      </div>
+    <section className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-[5%] py-32 overflow-hidden overflow-hidden">
+      {/* Background glow effects */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none opacity-50" />
+      <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-[#25C712]/5 rounded-full blur-[100px] pointer-events-none opacity-30" />
       
-      <h1 className="font-serif text-[clamp(3rem,8vw,6rem)] font-extrabold tracking-[-3px] leading-[0.95] mb-6">
-        Build. <span className="text-[#FF6B00]">Discuss.</span>
-        <br />
-        Ship together.
-      </h1>
-      
-      <p className="text-base text-[#8896B3] max-w-[500px] mb-10 font-light leading-relaxed">
-        The next-generation developer platform where code, community, and AI 
-        converge. Host repos, build communities, ship faster.
-      </p>
+      <div className="relative z-10 max-w-[900px]">
+        <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 font-mono text-[0.65rem] tracking-[0.1em] text-primary uppercase mb-8 backdrop-blur-sm animate-fade-up">
+          <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
+          The Developer Platform for the next era
+        </div>
+        
+        <h1 className="font-serif text-[clamp(3.5rem,10vw,7.5rem)] font-black tracking-[-0.04em] leading-[0.88] mb-8 text-[#F0F4FF] selection:bg-primary selection:text-primary-foreground anim-fade-up delay-100">
+          Build. <span className="text-primary italic font-serif">Deeply</span>.
+          <br />
+          Ship with <span className="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">Vilo AI.</span>
+        </h1>
+        
+        <p className="text-lg md:text-xl text-[#8896B3] max-w-[580px] mx-auto mb-12 font-light leading-relaxed anim-fade-up delay-200">
+          Where code, community, and intelligence converge. Host repositories, 
+          foster global communities, and automate your workflow like never before.
+        </p>
 
-      <div className="flex items-center gap-4 mb-12">
-        <Link 
-          href="/signup"
-          className="px-8 py-3 bg-[#FF6B00] text-[#050914] font-medium rounded-lg hover:bg-[#FF8C38] transition-colors"
-        >
-          Join Waitlist
-        </Link>
-        <Link
-          href="/login"
-          className="px-8 py-3 border border-[rgba(255,255,255,0.1)] text-[#F0F4FF] rounded-lg hover:border-[#FF6B00] hover:text-[#FF6B00] transition-colors"
-        >
-          Sign In
-        </Link>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-20 anim-fade-up delay-300">
+          <Button asChild size="lg" className="h-14 px-10 text-lg font-bold rounded-xl shadow-[0_15px_30px_rgba(255,107,0,0.25)] hover:shadow-[0_20px_40px_rgba(255,107,0,0.35)] transition-all transform hover:-translate-y-1">
+            <Link href="/signup">
+              Get Started for Free
+              <ChevronRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg" className="h-14 px-10 text-lg font-medium rounded-xl border-white/[0.08] bg-white/[0.03] backdrop-blur-md hover:bg-white/[0.08] hover:border-white/[0.15] text-[#F0F4FF] transition-all transform hover:-translate-y-1">
+            <Link href="/login">Explore Communities</Link>
+          </Button>
+        </div>
       </div>
 
-      <div className="flex flex-col items-center gap-2 mt-12 opacity-40 animate-[bounce_2s_ease-in-out_infinite]">
-        <span className="font-mono text-[0.65rem] tracking-[0.1em] text-[#8896B3]">scroll</span>
-        <div className="w-px h-10 bg-gradient-to-b from-transparent to-[#8896B3]" />
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-30 animate-[bounce_3s_ease-in-out_infinite]">
+        <span className="font-mono text-[0.6rem] tracking-[0.4em] uppercase text-[#8896B3]/60">scroll</span>
+        <div className="w-px h-16 bg-gradient-to-b from-primary via-primary/40 to-transparent" />
       </div>
     </section>
   )

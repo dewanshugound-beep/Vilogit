@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, ReactNode } from "react"
+import { cn } from "@/lib/utils"
 
 interface ScrollRowProps {
   flip?: boolean
@@ -34,7 +35,7 @@ export function ScrollRow({
           }
         })
       },
-      { threshold: 0.15 }
+      { threshold: 0.2 }
     )
 
     if (textRef.current) observer.observe(textRef.current)
@@ -45,34 +46,40 @@ export function ScrollRow({
 
   return (
     <div 
-      className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center py-28 px-[5%] md:px-[8%] min-h-screen border-b border-[rgba(255,255,255,0.06)] overflow-hidden ${flip ? 'md:[direction:rtl]' : ''}`}
+      className={cn(
+        "grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center py-32 px-[5%] md:px-[10%] min-h-[90vh] border-b border-white/[0.04] overflow-hidden relative",
+        flip ? 'md:[direction:rtl]' : ''
+      )}
     >
       <div 
         ref={textRef} 
-        className={`anim-text ${flip ? 'md:[direction:ltr] md:[transform:translateX(80px)]' : ''}`}
+        className={cn(
+          "anim-text text-left",
+          flip ? 'md:[direction:ltr] md:translate-x-[60px]' : ''
+        )}
       >
-        <div className="font-mono text-[0.65rem] text-[rgba(255,107,0,0.4)] tracking-[0.1em] mb-2">
+        <div className="font-mono text-[0.6rem] text-primary/40 tracking-[0.2em] mb-4 uppercase">
           {sectionNumber}
         </div>
         
-        <div className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.12em] text-[#FF6B00] uppercase mb-5">
-          <span className="block w-7 h-px bg-[#FF6B00]" />
+        <div className="inline-flex items-center gap-2.5 font-mono text-[0.7rem] tracking-[0.15em] text-primary uppercase mb-8">
+          <span className="block w-8 h-px bg-primary" />
           {eyebrow}
         </div>
         
-        <h2 className="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] font-extrabold tracking-[-2px] leading-none mb-5">
+        <h2 className="font-serif text-[clamp(2.5rem,5vw,4.2rem)] font-black tracking-[-0.04em] leading-[0.95] mb-8 text-[#F0F4FF] selection:bg-primary selection:text-primary-foreground">
           {title}
         </h2>
         
-        <p className="text-base text-[#8896B3] max-w-[440px] mb-8 font-light leading-relaxed">
+        <p className="text-lg text-[#8896B3] max-w-[480px] mb-10 font-light leading-relaxed">
           {description}
         </p>
         
-        <ul className="flex flex-col gap-3">
+        <ul className="flex flex-col gap-4">
           {features.map((feature, i) => (
-            <li key={i} className="flex items-center gap-2.5 text-sm text-[#8896B3]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00] shadow-[0_0_8px_rgba(255,107,0,0.6)]" />
-              {feature}
+            <li key={i} className="flex items-center gap-3.5 text-sm md:text-base text-[#8896B3] group">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_10px_rgba(255,107,0,0.8)] group-hover:scale-125 transition-transform" />
+              <span className="group-hover:text-[#F0F4FF] transition-colors">{feature}</span>
             </li>
           ))}
         </ul>
@@ -80,9 +87,16 @@ export function ScrollRow({
 
       <div 
         ref={visualRef} 
-        className={`anim-visual ${flip ? 'md:[direction:ltr] md:[transform:translateX(-80px)]' : ''}`}
+        className={cn(
+          "anim-visual relative",
+          flip ? 'md:[direction:ltr] md:-translate-x-[60px]' : ''
+        )}
       >
-        {children}
+        {/* Subtle background glow for visual components */}
+        <div className="absolute -inset-10 bg-primary/5 blur-[100px] rounded-full pointer-events-none opacity-40" />
+        <div className="relative z-10 transition-all transform hover:scale-[1.01] duration-500">
+          {children}
+        </div>
       </div>
     </div>
   )

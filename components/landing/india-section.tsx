@@ -213,10 +213,10 @@ export function IndiaSection() {
             </span>
           </div>
 
-          <h2 className="font-serif text-[clamp(2.4rem,4vw,3.8rem)] font-extrabold tracking-[-2.5px] leading-none mb-6 text-[#F0F4FF]">
+          <h2 className="font-serif text-[clamp(2.4rem,4vw,3.8rem)] font-black tracking-[-0.04em] leading-[0.9] mb-8 text-[#F0F4FF]">
             Built here.
             <br />
-            <span className="bg-gradient-to-r from-[#FF6B00] via-[#FF8C38] to-[#F0F4FF] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary via-accent-light to-[#F0F4FF] bg-clip-text text-transparent italic">
               For the world.
             </span>
           </h2>
