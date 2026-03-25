@@ -38,18 +38,18 @@
 }
 
 .dark {
-  --background: var(--charcoal);
-  --foreground: var(--cream);
-  --card: var(--charcoal-light);
-  --card-foreground: var(--cream);
-  --popover: var(--charcoal-light);
-  --popover-foreground: var(--cream);
-  --primary: var(--cream);
-  --primary-foreground: var(--charcoal);
-  --secondary: var(--charcoal-light);
-  --secondary-foreground: var(--cream);
-  --muted: var(--charcoal-light);
-  --muted-foreground: #999999;
+  --background: #050914;
+  --foreground: #F0F4FF;
+  --card: #0A1020;
+  --card-foreground: #F0F4FF;
+  --popover: #0A1020;
+  --popover-foreground: #F0F4FF;
+  --primary: #FF6B00;
+  --primary-foreground: #050914;
+  --secondary: #0A1020;
+  --secondary-foreground: #F0F4FF;
+  --muted: #0A1020;
+  --muted-foreground: #8896B3;
   --border: rgba(255,255,255,0.08);
   --input: rgba(255,255,255,0.04);
   --ring: var(--cream);
@@ -130,16 +130,16 @@ body {
 
 /* Glass morphism */
 .glass-card {
-  background: rgba(255,255,255,0.8);
-  border: 1px solid rgba(0,0,0,0.06);
-  border-radius: 12px;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  background: rgba(10, 16, 32, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(24px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .dark .glass-card {
-  background: rgba(42,42,42,0.8);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(10, 16, 32, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Input focus styles */
