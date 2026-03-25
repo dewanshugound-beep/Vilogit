@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function SignupPage() {
   const [name, setName] = useState("")
@@ -70,10 +71,10 @@ export default function SignupPage() {
             {/* Mobile logo */}
             <div className="lg:hidden mb-12 flex justify-center">
               <Link href="/" className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-foreground text-background flex items-center justify-center font-serif text-xl">
-                  V
+                <div className="relative w-10 h-10 transition-transform">
+                  <Image src="/logo.png" alt="Vilogit" fill className="object-cover rounded-lg" />
                 </div>
-                <span className="font-sans font-semibold text-lg tracking-tight">Vilogit</span>
+                <span className="font-serif font-bold text-xl tracking-tighter text-[#F0F4FF]">Vilogit</span>
               </Link>
             </div>
 
@@ -194,10 +195,10 @@ export default function SignupPage() {
         {/* Right side - Branding */}
         <div className="hidden lg:flex lg:w-1/2 flex-col justify-between p-12 border-l border-foreground/10">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-foreground text-background flex items-center justify-center font-serif text-xl">
-              V
+            <div className="relative w-11 h-11 transition-transform group-hover:scale-105">
+              <Image src="/logo.png" alt="Vilogit" fill className="object-cover rounded-lg" />
             </div>
-            <span className="font-sans font-semibold text-lg tracking-tight">Vilogit</span>
+            <span className="font-serif font-bold text-xl tracking-tighter text-[#F0F4FF] group-hover:text-primary transition-colors">Vilogit</span>
           </Link>
 
           <div className={`transition-all duration-700 delay-150 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

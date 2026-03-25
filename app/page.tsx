@@ -25,66 +25,74 @@ export default function Home() {
       <Hero />
 
       {/* Features Anchor */}
-      <div id="features" className="scroll-mt-32" />
+      <div id="features" className="scroll-mt-32 content-auto" />
 
       {/* Row 1: Code Layer */}
-      <ScrollRow
-        sectionNumber="01 / COLLABORATE"
-        eyebrow="Code Layer"
-        title={<>Pull requests,<br /><span className="text-primary italic">reimagined.</span></>}
-        description="Every PR gets an AI review before your team even sees it. Catch N+1 queries, security holes, and anti-patterns automatically — not after they're merged."
-        features={[
-          "Inline AI suggestions on every diff",
-          "Automated CI with zero config",
-          "Package registry built in",
-          "Branch protection with smart rules"
-        ]}
-      >
-        <GlassCard url="vilogit.dev/acme/api / pull / 47">
-          <PRDiffCard />
-        </GlassCard>
-      </ScrollRow>
+      <section className="content-auto">
+        <ScrollRow
+          sectionNumber="01 / COLLABORATE"
+          eyebrow="Code Layer"
+          title={<>Pull requests,<br /><span className="text-primary italic">reimagined.</span></>}
+          description="Every PR gets an AI review before your team even sees it. Catch N+1 queries, security holes, and anti-patterns automatically — not after they're merged."
+          features={[
+            "Inline AI suggestions on every diff",
+            "Automated CI with zero config",
+            "Package registry built in",
+            "Branch protection with smart rules"
+          ]}
+        >
+          <GlassCard url="vilogit.dev/acme/api / pull / 47">
+            <PRDiffCard />
+          </GlassCard>
+        </ScrollRow>
+      </section>
 
       {/* Row 2: Community Layer */}
-      <div id="community" className="scroll-mt-32" />
-      <ScrollRow
-        flip
-        sectionNumber="02 / COMMUNITY"
-        eyebrow="Vilos"
-        title={<>Your community<br />lives <span className="text-primary italic">with</span> your code.</>}
-        description="Vilos are communities that live next to repos. Ask questions, share work, run AMAs — everything contextual to the project, not scattered across Slack and Twitter."
-        features={[
-          "Karma system that rewards real contributions",
-          "Posts link directly to commits and PRs",
-          "Hackathon hub built in",
-          "Job board inside every Vilo"
-        ]}
-      >
-        <GlassCard url="vilogit.dev / v / open-source">
-          <CommunityCard />
-        </GlassCard>
-      </ScrollRow>
+      <div id="community" className="scroll-mt-32 content-auto" />
+      <section className="content-auto">
+        <ScrollRow
+          flip
+          sectionNumber="02 / COMMUNITY"
+          eyebrow="Vilos"
+          title={<>Your community<br />lives <span className="text-primary italic">with</span> your code.</>}
+          description="Vilos are communities that live next to repos. Ask questions, share work, run AMAs — everything contextual to the project, not scattered across Slack and Twitter."
+          features={[
+            "Karma system that rewards real contributions",
+            "Posts link directly to commits and PRs",
+            "Hackathon hub built in",
+            "Job board inside every Vilo"
+          ]}
+        >
+          <GlassCard url="vilogit.dev / v / open-source">
+            <CommunityCard />
+          </GlassCard>
+        </ScrollRow>
+      </section>
 
       {/* Row 3: AI Layer */}
-      <ScrollRow
-        sectionNumber="03 / INTELLIGENCE"
-        eyebrow="Vilo AI"
-        title={<>An AI that<br />actually <span className="text-[#25C712] italic">does</span> things.</>}
-        description="Vilo AI doesn't just suggest. It reads your repo, understands your history, then acts — opening issues, writing code, fixing pipelines — all from a single conversation."
-        features={[
-          "Context-aware across your full repo history",
-          "Can commit, push, and open PRs directly",
-          "Understands Hindi, Tamil, English naturally",
-          "Embedded in every PR, issue, and post"
-        ]}
-      >
-        <GlassCard url="Vilo AI — acme / api">
-          <AIChatCard />
-        </GlassCard>
-      </ScrollRow>
+      <section className="content-auto">
+        <ScrollRow
+          sectionNumber="03 / INTELLIGENCE"
+          eyebrow="Vilo AI"
+          title={<>An AI that<br />actually <span className="text-[#25C712] italic">does</span> things.</>}
+          description="Vilo AI doesn't just suggest. It reads your repo, understands your history, then acts — opening issues, writing code, fixing pipelines — all from a single conversation."
+          features={[
+            "Context-aware across your full repo history",
+            "Can commit, push, and open PRs directly",
+            "Understands Hindi, Tamil, English naturally",
+            "Embedded in every PR, issue, and post"
+          ]}
+        >
+          <GlassCard url="Vilo AI — acme / api">
+            <AIChatCard />
+          </GlassCard>
+        </ScrollRow>
+      </section>
 
       {/* India Section */}
-      <IndiaSection />
+      <section className="content-auto">
+        <IndiaSection />
+      </section>
 
       {/* CTA Section */}
       <section className="py-48 px-[5%] text-center relative overflow-hidden">

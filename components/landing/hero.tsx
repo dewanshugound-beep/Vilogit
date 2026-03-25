@@ -6,7 +6,22 @@ import { ChevronRight } from "lucide-react"
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-[5%] py-32 overflow-hidden overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-[5%] py-32 overflow-hidden">
+      {/* Massive Brand Backdrop (Stylish Title) */}
+      <div className="absolute top-[15%] left-1/2 -translate-x-1/2 pointer-events-none select-none overflow-hidden w-full flex justify-center">
+        <h2 className="font-serif text-[clamp(8rem,25vw,30rem)] font-black text-white/[0.02] uppercase tracking-[-0.05em] leading-none whitespace-nowrap anim-fade-up">
+          Vilogit
+        </h2>
+      </div>
+
+      {/* Floating Badge (LABS) */}
+      <div className="absolute top-[22%] left-1/2 -translate-x-1/2 z-20 anim-fade-up">
+        <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-[#050914]/80 backdrop-blur-md shadow-2xl">
+          <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(255,107,0,0.8)]" />
+          <span className="font-mono text-[0.6rem] tracking-[0.2em] text-white/60 uppercase">Vilogit Labs / Open Alpha</span>
+        </div>
+      </div>
+
       {/* Background glow effects */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none opacity-50" />
       <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-[#25C712]/5 rounded-full blur-[100px] pointer-events-none opacity-30" />

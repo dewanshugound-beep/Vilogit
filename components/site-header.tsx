@@ -9,14 +9,20 @@ export function SiteHeader() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5%] py-4 backdrop-blur-xl bg-[#050914]/80 border-b border-white/[0.05]">
       <div className="flex items-center gap-3">
-        <Link href="/" className="flex items-center gap-2 group transition-all transform hover:scale-[1.02]">
-          <div className="relative w-9 h-9 flex items-center justify-center">
-            <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full animate-pulse" />
-            <div className="relative w-8 h-8 rounded-lg bg-primary flex items-center justify-center overflow-hidden shadow-[0_0_15px_rgba(255,107,0,0.5)]">
-              <span className="font-serif font-extrabold text-lg text-primary-foreground leading-none">V</span>
+        <Link href="/" className="flex items-center gap-3 group transition-all transform hover:scale-[1.02]">
+          <div className="relative w-10 h-10 flex items-center justify-center">
+            <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full animate-pulse" />
+            <div className="relative w-9 h-9 rounded-xl overflow-hidden shadow-[0_0_20px_rgba(255,107,0,0.4)] border border-white/10">
+              <Image 
+                src="/logo.png" 
+                alt="Vilogit Logo" 
+                fill 
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
-          <span className="font-serif font-bold text-xl tracking-tight text-[#F0F4FF] group-hover:text-primary transition-colors">Vilogit</span>
+          <span className="font-serif font-bold text-2xl tracking-tighter text-[#F0F4FF] group-hover:text-primary transition-colors">Vilogit</span>
         </Link>
       </div>
 
