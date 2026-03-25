@@ -15,12 +15,18 @@ export function FounderSection() {
           className="flex flex-col md:flex-row items-center gap-12"
         >
           {/* Founder Visual Placeholder */}
-          <div className="relative w-48 h-48 flex-shrink-0 group">
+          <div className="relative w-48 h-64 flex-shrink-0 group">
             <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full group-hover:bg-primary/30 transition-all duration-500" />
-            <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 bg-[#050914] flex items-center justify-center font-serif text-6xl text-primary font-black shadow-2xl transition-transform hover:scale-105">
-              D
+            <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 bg-[#050914] shadow-2xl transition-transform hover:scale-105">
+              <Image 
+                src="/founder.png" 
+                alt="Devanshu - Founder of Vilogit" 
+                fill 
+                className="object-cover"
+                priority
+              />
             </div>
-            <div className="absolute -bottom-4 -right-4 bg-primary text-black font-mono text-[0.6rem] px-3 py-1 rounded-full font-bold uppercase tracking-widest">
+            <div className="absolute -bottom-4 -right-4 bg-primary text-black font-mono text-[0.6rem] px-3 py-1 rounded-full font-bold uppercase tracking-widest z-10">
               Origin
             </div>
           </div>
