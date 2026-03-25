@@ -27,10 +27,10 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
-  title: 'Vilogit — Build. Discuss. Ship together.',
-  description: 'A next-generation developer platform built in India for developers worldwide.',
+  title: 'Vilogit — Build. Deploy. Automate.',
+  description: 'The developer platform like GitHub, but with integrated agents that manage deployments and provide real-time reports.',
   icons: {
-    icon: '/icon.svg',
+    icon: '/logo.png',
   },
 }
 

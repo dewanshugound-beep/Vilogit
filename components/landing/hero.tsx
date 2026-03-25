@@ -28,19 +28,20 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="font-serif text-[clamp(3.5rem,10vw,7.5rem)] font-black tracking-[-0.04em] leading-[0.88] mb-10 text-[#F0F4FF] selection:bg-primary selection:text-primary-foreground"
         >
-          Build. <span className="text-primary italic font-serif">Deeply</span>.
+          Build. Deploy.
           <br />
-          Ship with <span className="text-white/40">Vilo AI.</span>
+          <span className="text-primary italic font-serif">Automate.</span>
         </motion.h1>
         
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-lg md:text-xl text-[#8896B3] max-w-[580px] mx-auto mb-14 font-light leading-relaxed"
+          className="text-lg md:text-xl text-[#8896B3] max-w-[620px] mx-auto mb-14 font-light leading-relaxed"
         >
-          Where code, community, and intelligence converge. Host repositories, 
-          foster global communities, and automate your workflow with precision.
+          The next-generation developer platform like GitHub, but with built-in 
+          <span className="text-white/80 font-medium"> agent integration </span> to manage 
+          deployments, monitor health, and provide real-time reports.
         </motion.p>
 
         <motion.div 

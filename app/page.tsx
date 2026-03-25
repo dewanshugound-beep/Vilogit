@@ -69,21 +69,21 @@ export default function Home() {
         </ScrollRow>
       </section>
 
-      {/* Row 3: AI Layer */}
+      {/* Row 3: Agent Layer */}
       <section className="content-auto">
         <ScrollRow
-          sectionNumber="03 / INTELLIGENCE"
-          eyebrow="Vilo AI"
-          title={<>An AI that<br />actually <span className="text-[#25C712] italic">does</span> things.</>}
-          description="Vilo AI doesn't just suggest. It reads your repo, understands your history, then acts — opening issues, writing code, fixing pipelines — all from a single conversation."
+          sectionNumber="03 / AUTONOMY"
+          eyebrow="Vilo Agents"
+          title={<>Autonomous agents<br />that actually <span className="text-primary italic">act.</span></>}
+          description="Vilo Agents manage your infrastructure, handle cloud deployments, and provide detailed health reports — all from your repository. They don't just chat; they act."
           features={[
-            "Context-aware across your full repo history",
-            "Can commit, push, and open PRs directly",
-            "Understands Hindi, Tamil, English naturally",
-            "Embedded in every PR, issue, and post"
+            "Auto-remediation of deployment failures",
+            "Continuous health monitoring & reporting",
+            "Agent-managed multi-region deploys",
+            "Real-time security audits & compliance"
           ]}
         >
-          <GlassCard url="Vilo AI — acme / api">
+          <GlassCard url="Vilo Agent — acme / api">
             <AIChatCard />
           </GlassCard>
         </ScrollRow>
