@@ -3,63 +3,73 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
+import { motion } from "framer-motion"
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-[5%] py-32 overflow-hidden">
-      {/* Massive Brand Backdrop (Stylish Title) */}
-      <div className="absolute top-[15%] left-1/2 -translate-x-1/2 pointer-events-none select-none overflow-hidden w-full flex justify-center">
-        <h2 className="font-serif text-[clamp(8rem,25vw,30rem)] font-black text-white/[0.02] uppercase tracking-[-0.05em] leading-none whitespace-nowrap anim-fade-up">
-          Vilogit
-        </h2>
-      </div>
-
-      {/* Floating Badge (LABS) */}
-      <div className="absolute top-[22%] left-1/2 -translate-x-1/2 z-20 anim-fade-up">
-        <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-[#050914]/80 backdrop-blur-md shadow-2xl">
-          <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(255,107,0,0.8)]" />
-          <span className="font-mono text-[0.6rem] tracking-[0.2em] text-white/60 uppercase">Vilogit Labs / Open Alpha</span>
-        </div>
-      </div>
-
-      {/* Background glow effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none opacity-50" />
-      <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-[#25C712]/5 rounded-full blur-[100px] pointer-events-none opacity-30" />
+    <section className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-[5%] py-32 overflow-hidden">
+      {/* Background glow effects - Reduced opacity for performance */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none opacity-40 will-change-transform" />
       
       <div className="relative z-10 max-w-[900px]">
-        <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 font-mono text-[0.65rem] tracking-[0.1em] text-primary uppercase mb-8 backdrop-blur-sm animate-fade-up">
-          <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
-          The Developer Platform for the next era
-        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 font-mono text-[0.65rem] tracking-[0.2em] text-primary uppercase mb-10 backdrop-blur-md"
+        >
+          <span className="flex h-2 w-2 rounded-full bg-primary shadow-[0_0_8px_rgba(255,107,0,0.8)]" />
+          The Developer Platform Lab
+        </motion.div>
         
-        <h1 className="font-serif text-[clamp(3.5rem,10vw,7.5rem)] font-black tracking-[-0.04em] leading-[0.88] mb-8 text-[#F0F4FF] selection:bg-primary selection:text-primary-foreground anim-fade-up delay-100">
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="font-serif text-[clamp(3.5rem,10vw,7.5rem)] font-black tracking-[-0.04em] leading-[0.88] mb-10 text-[#F0F4FF] selection:bg-primary selection:text-primary-foreground"
+        >
           Build. <span className="text-primary italic font-serif">Deeply</span>.
           <br />
-          Ship with <span className="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">Vilo AI.</span>
-        </h1>
+          Ship with <span className="text-white/40">Vilo AI.</span>
+        </motion.h1>
         
-        <p className="text-lg md:text-xl text-[#8896B3] max-w-[580px] mx-auto mb-12 font-light leading-relaxed anim-fade-up delay-200">
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="text-lg md:text-xl text-[#8896B3] max-w-[580px] mx-auto mb-14 font-light leading-relaxed"
+        >
           Where code, community, and intelligence converge. Host repositories, 
-          foster global communities, and automate your workflow like never before.
-        </p>
+          foster global communities, and automate your workflow with precision.
+        </motion.p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-20 anim-fade-up delay-300">
-          <Button asChild size="lg" className="h-14 px-10 text-lg font-bold rounded-xl shadow-[0_15px_30px_rgba(255,107,0,0.25)] hover:shadow-[0_20px_40px_rgba(255,107,0,0.35)] transition-all transform hover:-translate-y-1">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-5"
+        >
+          <Button asChild size="lg" className="h-14 px-10 text-lg font-bold rounded-xl shadow-[0_15px_30px_rgba(255,107,0,0.25)] hover:bg-primary/90 transition-all hover:scale-[1.02]">
             <Link href="/signup">
-              Get Started for Free
+              Get Alpha Access
               <ChevronRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="h-14 px-10 text-lg font-medium rounded-xl border-white/[0.08] bg-white/[0.03] backdrop-blur-md hover:bg-white/[0.08] hover:border-white/[0.15] text-[#F0F4FF] transition-all transform hover:-translate-y-1">
-            <Link href="/login">Explore Communities</Link>
+          <Button asChild variant="outline" size="lg" className="h-14 px-10 text-lg font-medium rounded-xl border-white/[0.08] bg-white/[0.03] backdrop-blur-md hover:bg-white/[0.08] hover:border-white/[0.15] text-[#F0F4FF] transition-all hover:scale-[1.02]">
+            <Link href="/login">Explore Origin</Link>
           </Button>
-        </div>
+        </motion.div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-30 animate-[bounce_3s_ease-in-out_infinite]">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.3 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 animate-bounce"
+      >
         <span className="font-mono text-[0.6rem] tracking-[0.4em] uppercase text-[#8896B3]/60">scroll</span>
         <div className="w-px h-16 bg-gradient-to-b from-primary via-primary/40 to-transparent" />
-      </div>
+      </motion.div>
     </section>
   )
 }

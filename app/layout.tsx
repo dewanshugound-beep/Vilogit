@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono, Instrument_Sans, Instrument_Serif } from 'next/font/google'
 import './globals.css'
+import { SmoothScroll } from "@/components/smooth-scroll"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -27,27 +28,11 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: 'Vilogit — Build. Discuss. Ship together.',
-  description: 'A next-generation developer platform built in India for developers worldwide. GitHub meets Reddit with AI-powered collaboration.',
+  description: 'A next-generation developer platform built in India for developers worldwide.',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/icon.svg',
   },
 }
-
-import { SmoothScroll } from "@/components/smooth-scroll"
 
 export default function RootLayout({
   children,
@@ -56,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable} ${instrumentSans.variable} ${instrumentSerif.variable}`}>
-       <body className="font-sans antialiased selection:bg-primary/30 selection:text-primary">
+       <body className="font-sans antialiased text-[#F0F4FF] bg-[#050914] selection:bg-primary/30 selection:text-primary">
         <SmoothScroll>
           {children}
         </SmoothScroll>
