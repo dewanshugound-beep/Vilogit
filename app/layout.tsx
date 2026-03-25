@@ -49,6 +49,30 @@ export default function RootLayout({
         <SmoothScroll>
           {children}
         </SmoothScroll>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "Vilogit",
+              "applicationCategory": "DeveloperPlatform",
+              "operatingSystem": "All",
+              "description": "The developer platform like GitHub, but with integrated autonomous agents for deployments and reporting.",
+              "author": {
+                "@type": "Person",
+                "name": "Devanshu",
+                "description": "14-year-old developer and student from Chavara Vidyapeeth, Narsinghpur.",
+                "url": "https://vilogit.dev"
+              },
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            })
+          }}
+        />
       </body>
     </html>
   )
