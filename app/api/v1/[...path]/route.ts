@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const runtime = 'edge'; // High-Aura Performance Bypass
+
+
 const BACKEND_URL = process.env.VILOGIT_API_URL || 'http://localhost:8000';
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
