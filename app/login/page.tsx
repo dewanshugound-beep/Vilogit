@@ -26,8 +26,14 @@ export default function LoginPage() {
     setError("")
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      router.push("/")
+      const { login } = await import("@/lib/api")
+      const res = await login(email, password)
+      
+      if (res.data?.tokens?.accessToken) {
+        router.push("/dashboard")
+      } else {
+        setError(res.error || "Invalid credentials. Please try again.")
+      }
     } catch {
       setError("Invalid credentials. Please try again.")
     } finally {

@@ -27,8 +27,15 @@ export default function SignupPage() {
     setError("")
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      router.push("/dashboard")
+      const { register } = await import("@/lib/api")
+      const username = email.split("@")[0].replace(/[^a-zA-Z0-9_]/g, "") // Simple handle generator
+      const res = await register(name, username, email, password)
+      
+      if (res.data?.tokens?.accessToken) {
+        router.push("/dashboard")
+      } else {
+        setError(res.error || "Signup failed. Please try again.")
+      }
     } catch {
       setError("Something went wrong. Please try again.")
     } finally {
