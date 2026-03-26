@@ -10,7 +10,13 @@ export function SiteFooter() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10 max-w-[1200px] mx-auto">
         <Link href="/" className="flex items-center gap-2 group transition-all">
           <div className="relative flex items-center justify-center w-10 h-10 transition-transform group-hover:scale-105">
-            <span className="font-serif font-black text-3xl text-primary relative z-10 drop-shadow-[0_0_8px_rgba(255,107,0,0.6)]">V</span>
+            <img 
+              src="/brand-logo.png" 
+              alt="Vilogit Logo" 
+              width={40} 
+              height={40} 
+              className="object-contain"
+            />
             <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
           <span className="font-serif font-bold text-2xl tracking-tighter text-[#F0F4FF] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] group-hover:text-primary transition-colors">Vilogit</span>

@@ -53,8 +53,8 @@ export function PRDiffCard() {
       </div>
       
       <div className="flex gap-2.5 bg-[rgba(255,107,0,0.06)] border border-[rgba(255,107,0,0.15)] rounded-xl p-3">
-        <div className="w-7 h-7 rounded-full bg-[#FF6B00] flex items-center justify-center font-serif text-[0.65rem] font-extrabold shrink-0">
-          V
+        <div className="w-7 h-7 rounded-full bg-[#FF6B00] overflow-hidden flex items-center justify-center shrink-0">
+          <img src="/brand-logo.png" alt="V" className="w-full h-full object-contain p-1" />
         </div>
         <p className="text-[0.78rem] text-[#8896B3] leading-relaxed">
           <span className="text-[#FF6B00]">Vilo AI:</span> The original code loads all repos into memory before filtering — classic N+1. The fix is correct. Want me to add an index on <span className="text-[#FF6B00]">repos.name</span> too?
@@ -120,8 +120,8 @@ export function AIChatCard() {
 
       {/* AI response */}
       <div className="flex gap-2 items-start">
-        <div className="w-6.5 h-6.5 rounded-full bg-[#FF6B00] flex items-center justify-center text-[0.6rem] font-bold text-white shrink-0">
-          V
+        <div className="w-6.5 h-6.5 rounded-full bg-[#FF6B00] overflow-hidden flex items-center justify-center shrink-0">
+          <img src="/brand-logo.png" alt="V" className="w-full h-full object-contain p-1" />
         </div>
         <div>
           <div className="max-w-[80%] px-3 py-2 rounded-[2px_12px_12px_12px] bg-[rgba(255,107,0,0.1)] border border-[rgba(255,107,0,0.2)] text-[0.78rem] text-[#F0F4FF] leading-relaxed">
@@ -150,8 +150,8 @@ export function AIChatCard() {
 
       {/* AI response with status */}
       <div className="flex gap-2 items-start">
-        <div className="w-6.5 h-6.5 rounded-full bg-[#FF6B00] flex items-center justify-center text-[0.6rem] font-bold text-white shrink-0">
-          V
+        <div className="w-6.5 h-6.5 rounded-full bg-[#FF6B00] overflow-hidden flex items-center justify-center shrink-0">
+          <img src="/brand-logo.png" alt="V" className="w-full h-full object-contain p-1" />
         </div>
         <div>
           <div className="max-w-[80%] px-3 py-2 rounded-[2px_12px_12px_12px] bg-[rgba(255,107,0,0.1)] border border-[rgba(255,107,0,0.2)] text-[0.78rem] text-[#F0F4FF]">

@@ -28,14 +28,26 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://vilogit.vercel.app'),
-  title: 'Vilogit — Build. Deploy. Automate.',
-  description: 'The developer platform like GitHub, but with integrated agents that manage deployments and provide real-time reports.',
+  title: 'Vilogit — High-Performance Developer Platform',
+  description: 'The developer platform for the modern era. Build, deploy, and automate with Vilogit.',
   verification: {
     google: "wOhQQh_20E6OJGYP_EV4VwqcpzaKejWbiYjTnDSlKbg",
   },
   keywords: ["developer platform", "AI agents", "git platform", "deployment engine", "automated DevOps", "Vilogit", "Devanshu", "Chavara Vidyapeeth"],
   icons: {
-    icon: '/logo.png',
+    icon: '/brand-logo.png',
+  },
+  openGraph: {
+    title: 'Vilogit — High-Performance Developer Platform',
+    description: 'The developer platform for the modern era. Build, deploy, and automate with Vilogit.',
+    images: [
+      {
+        url: '/brand-logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Vilogit Logo',
+      },
+    ],
   },
 }
 
