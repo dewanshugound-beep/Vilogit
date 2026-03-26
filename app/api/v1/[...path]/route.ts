@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const BACKEND_URL = process.env.VILOGIT_API_URL || 'http://localhost:4000';
+const BACKEND_URL = process.env.VILOGIT_API_URL || 'http://localhost:8000';
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   return proxyToBackend(req, await params);
