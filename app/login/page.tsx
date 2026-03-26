@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Github, Mail, Lock, Loader2, AlertCircle } from "lucide-react"
+import { Github, Mail, Lock, Loader2, AlertCircle, Wand2 } from "lucide-react"
+import { MagicSignIn } from "@/components/auth/MagicSignIn"
 
 export default function LoginPage() {
   const router = useRouter()
@@ -15,6 +16,7 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
   const [mounted, setMounted] = useState(false)
+  const [mode, setMode] = useState<'password' | 'magic'>('magic')
 
   useEffect(() => {
     setMounted(true)
@@ -100,6 +102,23 @@ export default function LoginPage() {
             </p>
           </div>
 
+          <div className="flex gap-4 mb-8">
+            <button 
+              onClick={() => setMode('magic')}
+              className={`flex-1 h-12 rounded-xl flex items-center justify-center gap-2 transition-all border ${mode === 'magic' ? 'bg-primary/10 border-primary text-primary shadow-[0_0_20px_rgba(255,107,0,0.1)]' : 'bg-white/[0.03] border-white/5 text-white/40 hover:bg-white/[0.05]'}`}
+            >
+              <Wand2 className="w-4 h-4" />
+              <span className="font-mono text-xs uppercase tracking-widest">Magic</span>
+            </button>
+            <button 
+              onClick={() => setMode('password')}
+              className={`flex-1 h-12 rounded-xl flex items-center justify-center gap-2 transition-all border ${mode === 'password' ? 'bg-primary/10 border-primary text-primary shadow-[0_0_20px_rgba(255,107,0,0.1)]' : 'bg-white/[0.03] border-white/5 text-white/40 hover:bg-white/[0.05]'}`}
+            >
+              <Lock className="w-4 h-4" />
+              <span className="font-mono text-xs uppercase tracking-widest">Secure</span>
+            </button>
+          </div>
+
           {error && (
             <div className="mb-6 p-4 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive text-sm flex items-center gap-3">
               <AlertCircle className="w-4 h-4" />
@@ -107,46 +126,50 @@ export default function LoginPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2">
-              <Label className="text-xs font-mono uppercase tracking-widest text-[#8896B3]">Email Address</Label>
-              <Input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="dev@vilogit.dev"
-                required
-                className="h-14 bg-white/[0.03] border-white/10 rounded-xl focus:bg-white/[0.05] focus:border-primary/50 text-[#F0F4FF]"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <Label className="text-xs font-mono uppercase tracking-widest text-[#8896B3]">Password</Label>
-                <Link href="/forgot-password" size="sm" className="text-xs text-primary hover:underline">Forgot?</Link>
+          {mode === 'magic' ? (
+            <MagicSignIn />
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-2">
+                <Label className="text-xs font-mono uppercase tracking-widest text-[#8896B3]">Email Address</Label>
+                <Input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="dev@vilogit.dev"
+                  required
+                  className="h-14 bg-white/[0.03] border-white/10 rounded-xl focus:bg-white/[0.05] focus:border-primary/50 text-[#F0F4FF]"
+                />
               </div>
-              <Input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                required
-                className="h-14 bg-white/[0.03] border-white/10 rounded-xl focus:bg-white/[0.05] focus:border-primary/50 text-[#F0F4FF]"
-              />
-            </div>
 
-            <Button
-              type="submit"
-              disabled={isLoading}
-              className="w-full h-14 bg-primary text-black font-bold text-lg rounded-xl shadow-lg hover:bg-primary/90 transition-all"
-            >
-              {isLoading ? (
-                <Loader2 className="w-5 h-5 animate-spin" />
-              ) : (
-                "Explore Origin"
-              )}
-            </Button>
-          </form>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <Label className="text-xs font-mono uppercase tracking-widest text-[#8896B3]">Password</Label>
+                  <Link href="/forgot-password" size="sm" className="text-xs text-primary hover:underline">Forgot?</Link>
+                </div>
+                <Input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  required
+                  className="h-14 bg-white/[0.03] border-white/10 rounded-xl focus:bg-white/[0.05] focus:border-primary/50 text-[#F0F4FF]"
+                />
+              </div>
+
+              <Button
+                type="submit"
+                disabled={isLoading}
+                className="w-full h-14 bg-primary text-black font-bold text-lg rounded-xl shadow-lg hover:bg-primary/90 transition-all"
+              >
+                {isLoading ? (
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                ) : (
+                  "Explore Origin"
+                )}
+              </Button>
+            </form>
+          )}
 
           <div className="mt-10">
             <div className="relative mb-8">
