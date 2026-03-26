@@ -10,15 +10,14 @@ export function SiteHeader() {
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5%] py-4 backdrop-blur-xl bg-[#050914]/80 border-b border-white/[0.05]">
       <div className="flex items-center gap-3">
         <Link href="/" className="flex items-center gap-2 group transition-all">
-          <div className="relative flex items-center justify-center w-14 h-14 transition-transform group-hover:scale-105">
+          <div className="relative flex items-center justify-center w-12 h-12 overflow-hidden rounded-lg transition-transform group-hover:scale-110">
             <Image 
               src="/brand-logo.png" 
               alt="Vilogit Logo" 
-              width={56} 
-              height={56} 
-              className="object-contain scale-110"
+              width={80} 
+              height={80} 
+              className="object-cover scale-[2.2] translate-y-[2px]"
             />
-            <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
           <span className="font-serif font-bold text-2xl tracking-tighter text-[#F0F4FF] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] group-hover:text-primary transition-colors">Vilogit</span>
         </Link>
