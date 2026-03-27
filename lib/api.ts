@@ -3,9 +3,9 @@
  * Secure, typed client for connecting the Vilogit WEB frontend to the Vilogit BACKEND.
  *
  * Security:
- * - Access tokens stored in memory
- * - Refresh tokens stored in httpOnly cookies (handled by backend)
- * - Automatic silent refresh via Next.js proxy
+ * - Access tokens stored in local storage and memory
+ * - Refresh tokens handled via Supabase auth state
+ * - Secure communication with Origin backend
  */
 
 let _accessToken: string | null = null;
@@ -28,10 +28,6 @@ export interface ApiResponse<T = unknown> {
   status: number;
 }
 
-export interface AuthTokens {
-  accessToken: string;
-}
-
 export interface User {
   id: string;
   email: string;
@@ -47,84 +43,94 @@ export interface User {
 
 export interface AuthResult {
   user: User;
-  tokens: AuthTokens;
+  tokens: { accessToken: string };
 }
 
-async function apiFetch<T = unknown>(
+/**
+ * viloFetch - Primary secure fetch utility for the Vilogit Origin
+ */
+export async function viloFetch<T = unknown>(
   path: string,
-  options: RequestInit = {},
-  retry = true
+  options: RequestInit = {}
 ): Promise<ApiResponse<T>> {
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || '';
+  const url = `${baseUrl}/api/v1${path}`;
+
+  // 1. Pull Supabase JWT from local storage or memory
+  let token = _accessToken;
+  if (!token && typeof window !== 'undefined') {
+    // Look for Supabase auth markers in localStorage
+    const storageKeys = Object.keys(localStorage);
+    const sbKey = storageKeys.find(k => k.startsWith('sb-') && k.endsWith('-auth-token'));
+    if (sbKey) {
+      try {
+        const sbData = JSON.parse(localStorage.getItem(sbKey) || '{}');
+        token = sbData.access_token || null;
+      } catch (e) {
+        console.warn('Failed to parse Supabase token from storage');
+      }
+    }
+  }
+
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
     ...(options.headers as Record<string, string> || {}),
   };
 
-  if (_accessToken) {
-    headers['Authorization'] = `Bearer ${_accessToken}`;
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
   }
 
-  // Target the Next.js local proxy route
-  const res = await fetch(`/api/v1${path}`, {
-    ...options,
-    headers,
-    credentials: 'include',
-  });
-
-  // Silent token refresh on 401
-  if (res.status === 401 && retry) {
-    const ok = await silentRefresh();
-    if (ok) return apiFetch<T>(path, options, false);
-    
-    clearAccessToken();
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(new CustomEvent('auth:expired'));
-    }
-    return { data: null, error: 'Session expired. Please log in again.', status: 401 };
-  }
-
-  let data: any;
   try {
-    data = await res.json();
-  } catch {
-    data = null;
-  }
-
-  if (!res.ok) {
-    const errMsg = data?.message || data?.error || `Request failed (${res.status})`;
-    return { data: null, error: errMsg, status: res.status };
-  }
-
-  const payload = data?.data ?? data;
-  return { data: payload as T, error: null, status: res.status };
-}
-
-async function silentRefresh(): Promise<boolean> {
-  try {
-    const res = await fetch('/api/v1/auth/refresh', {
-      method: 'POST',
+    const res = await fetch(url, {
+      ...options,
+      headers,
       credentials: 'include',
     });
-    if (!res.ok) return false;
-    const json = await res.json();
-    const token = json?.data?.accessToken || json?.accessToken;
-    if (token) {
-      setAccessToken(token);
-      return true;
+
+    if (!res.ok) {
+      let errorData: any;
+      try {
+        errorData = await res.json();
+      } catch {
+        errorData = null;
+      }
+      
+      const errMsg = errorData?.message || errorData?.error || `Request failed (${res.status})`;
+      console.error(`❌ Vilo Engine Trippin': ${errMsg}`);
+      
+      return { 
+        data: null, 
+        error: errMsg, 
+        status: res.status 
+      };
     }
-    return false;
-  } catch {
-    return false;
+
+    const data = await res.json();
+    return { 
+      data: data?.data ?? data, 
+      error: null, 
+      status: res.status 
+    };
+  } catch (err: any) {
+    console.error(`❌ Vilo Engine Trippin': ${err.message}`);
+    return { 
+      data: null, 
+      error: err.message, 
+      status: 500 
+    };
   }
 }
 
 // ─── Auth API ─────────────────────────────────────────────────────────────────
 export async function login(email: string, password: string): Promise<ApiResponse<AuthResult>> {
-  const res = await apiFetch<AuthResult>('/auth/login', {
+  const res = await viloFetch<AuthResult>('/auth/login', {
     method: 'POST',
     body: JSON.stringify({ email, password }),
   });
-  if (res.data?.tokens?.accessToken) setAccessToken(res.data.tokens.accessToken);
+  if (res.data?.tokens?.accessToken) {
+    setAccessToken(res.data.tokens.accessToken);
+  }
   return res;
 }
 
@@ -134,17 +140,19 @@ export async function register(
   email: string,
   password: string
 ): Promise<ApiResponse<AuthResult>> {
-  const res = await apiFetch<AuthResult>('/auth/register', {
+  const res = await viloFetch<AuthResult>('/auth/register', {
     method: 'POST',
     body: JSON.stringify({ name, username, email, password }),
   });
-  if (res.data?.tokens?.accessToken) setAccessToken(res.data.tokens.accessToken);
+  if (res.data?.tokens?.accessToken) {
+    setAccessToken(res.data.tokens.accessToken);
+  }
   return res;
 }
 
 export async function logout(): Promise<void> {
   try {
-    await apiFetch('/auth/logout', { method: 'POST' });
+    await viloFetch('/auth/logout', { method: 'POST' });
   } catch { /* ignore */ }
   clearAccessToken();
   if (typeof window !== 'undefined') {
@@ -152,10 +160,6 @@ export async function logout(): Promise<void> {
   }
 }
 
-export async function refreshSession(): Promise<boolean> {
-  return silentRefresh();
-}
-
 export async function getMe(): Promise<ApiResponse<User>> {
-  return apiFetch<User>('/users/me');
+  return viloFetch<User>('/users/me');
 }
